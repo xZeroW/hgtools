@@ -1,12 +1,18 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
 const Navlinks = () => {
   return (
-    <ul className="right">
-      <li><NavLink to='/stats'>Stats</NavLink></li>
-      <li><NavLink to='/tree'>Passive Tree</NavLink></li>
-    </ul>
+    <div className="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul className="navbar-nav mr-auto">
+        <li className="nav-item">
+          <Link to='/stats' className="nav-link">Stats</Link>
+        </li>
+        <li className="nav-item">
+        <Link to='/tree' className="nav-link">Tree</Link>
+        </li>
+      </ul>
+    </div>
   );
 };
 
