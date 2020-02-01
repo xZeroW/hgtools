@@ -36,8 +36,11 @@ code {
   min-height: 20px;
 }
 
-.tab-content .tab-pane {
+.tab-content {
   margin-top: 10px;
+}
+
+.tab-content td {
   text-align: center;
   align-content: center;
 }

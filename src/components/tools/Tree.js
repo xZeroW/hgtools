@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 function Tree() {
   const [pbar, setPbar] = useState(0);
@@ -30,52 +30,50 @@ function Tree() {
               </td>
               <td id="Aries"><img src="https://via.placeholder.com/42" alt="skill"></img></td>
               <td id="WildBlow"><img src="https://via.placeholder.com/42" alt="skill"></img></td>
+              <td></td>
+              <td id="FountainOfYouth"><img src="https://via.placeholder.com/42" alt="skill"></img></td>
+              <td id="IronMaiden"><img src="https://via.placeholder.com/42" alt="skill"></img></td>
+              <td></td>
+              <td id="Entrenche"><img src="https://via.placeholder.com/42" alt="skill"></img></td>
+              <td id="BloodRush"><img src="https://via.placeholder.com/42" alt="skill"></img></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td><img src="https://via.placeholder.com/42" alt="skill"></img></td>
+              <td></td>
+              <td></td>
+              <td><img src="https://via.placeholder.com/42" alt="skill"></img></td>
+              <td></td>
+              <td><img src="https://via.placeholder.com/42" alt="skill"></img></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><img src="https://via.placeholder.com/42" alt="skill"></img></td>
+              <td><img src="https://via.placeholder.com/42" alt="skill"></img></td>
+              <td></td>
+              <td></td>
+              <td><img src="https://via.placeholder.com/42" alt="skill"></img></td>
+              <td><img src="https://via.placeholder.com/42" alt="skill"></img></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><img src="https://via.placeholder.com/42" alt="skill"></img></td>
+              <td><img src="https://via.placeholder.com/42" alt="skill"></img></td>
+              <td></td>
+              <td><img src="https://via.placeholder.com/42" alt="skill"></img></td>
+              <td><img src="https://via.placeholder.com/42" alt="skill"></img></td>
+              <td></td>
+              <td></td>
+              <td><img src="https://via.placeholder.com/42" alt="skill"></img></td>
+            </tr>
+            <tr>
+              <td><img src="https://via.placeholder.com/42" alt="skill"></img></td>
+              <td></td>
               <td><img src="https://via.placeholder.com/42" alt="skill"></img></td>
               <td><img src="https://via.placeholder.com/42" alt="skill"></img></td>
               <td><img src="https://via.placeholder.com/42" alt="skill"></img></td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>Assault</td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>Bash</td>
-              <td></td>
-              <td>Elemental Strike</td>
-              <td>Axe Mastery</td>
-              <td>Mace Mastery</td>
-              <td>Sword Mastery</td>
+              <td><img src="https://via.placeholder.com/42" alt="skill"></img></td>
               <td></td>
               <td></td>
             </tr>
