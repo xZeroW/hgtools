@@ -1,21 +1,9 @@
 body {
-  margin: 0;
-  font-family: 'Nunito', sans-serif;;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  background-color: rgb(25, 33, 77);
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
-
-.container {
-  padding-top: 3.5rem;
-}
-
-.stats {
-  align-content: center;
+.stats, .tree, .register {
+  margin-top: 7rem;
 }
 
 .progress-bar-vertical {
@@ -44,10 +32,4 @@ code {
 
 .tab-content td {
   text-align: center;
-  align-content: center;
-}
-
-img{
-  max-width: 54px;
-  max-height: 54px;
 }

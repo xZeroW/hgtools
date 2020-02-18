@@ -1,17 +1,15 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class Dashboard extends Component {
-  render() {
-    return(
-    <div className="dashboard container">
-      <div className="row">
-        <div className="col">
-          <p>Index/News</p>
+function Dashboard() {
+  return (
+    <div className="container">
+      <div className="register">
+        <div className="row">
+          <p>asdas</p>
         </div>
       </div>
-    </div>
-    )
+      </div>
+    );
   }
-}
 
 export default Dashboard;

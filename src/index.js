@@ -1,6 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import './assets/css/argon-design-system.css';
+import './assets/css/index.css';
+import './assets/css/nucleo-icons.css';
+import './assets/css/font-awesome.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
