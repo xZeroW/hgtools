@@ -71,13 +71,13 @@ function Navbar() {
           <li className="nav-item d-none d-lg-block ml-lg-4">
             <a href="/register" className="btn btn-neutral btn-icon">
               <span className="btn-inner--icon">
-                <i className="fa fa-shopping-cart"></i>
+                <i className="fa fa-user-plus mr-2"></i>
               </span>
-              <span className="nav-link-inner--text"> Register</span>
+              <span className="nav-link-inner--text">Register</span>
             </a>
             <a href="/" className="btn btn-neutral btn-icon">
               <span className="btn-inner--icon">
-                <i className="fa fa-cloud-download mr-2"></i>
+                <i className="fas fa-user-check mr-2"></i>
               </span>
               <span className="nav-link-inner--text">Login</span>
             </a>

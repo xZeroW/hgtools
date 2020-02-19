@@ -1,5 +1,6 @@
 body {
   background-color: rgb(25, 33, 77);
+  font-family: Nunito; 
 }
 
 .stats, .tree, .register {
