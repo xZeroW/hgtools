@@ -19,7 +19,7 @@ export default class Register extends React.Component {
     console.log(user);
     Axios({
       method: 'post',
-      url: 'http://localhost:3600/users',
+      url: 'http://34.69.64.216:3600/users',
       data: { ...user }
     }).then(res => {
       console.log(res);
