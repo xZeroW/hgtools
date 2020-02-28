@@ -17,6 +17,8 @@ export default class Register extends React.Component {
       // eslint-disable-next-line react/prop-types
       this.props.history.push('/');
     }
+
+    document.body.classList.add('bg-gradient-primary');
   }
   render(){
     return (
