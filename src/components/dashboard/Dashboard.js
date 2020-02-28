@@ -1,15 +1,19 @@
 import React from 'react';
+import Navbar from 'components/layout/Navbar';
 
 function Dashboard() {
   return (
-    <div className="container">
-      <div className="register">
-        <div className="row">
-          <p>asdas</p>
+    <React.Fragment>
+      <Navbar />
+      <div className="container">
+        <div className="content">
+          <div className="row">
+            <p>asdas</p>
+          </div>
         </div>
       </div>
-      </div>
-    );
-  }
+    </React.Fragment>
+  );
+}
 
 export default Dashboard;

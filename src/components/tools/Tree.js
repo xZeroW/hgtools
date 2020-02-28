@@ -85,7 +85,7 @@ function Tree() {
                     <td><img src="https://via.placeholder.com/42" alt="skill"></img><div>{skills[9]}</div></td>
                   </tr>
                   <tr>
-                    <td onClick={e => setSkills({...skills, skills: 5})}><img src="https://via.placeholder.com/42" alt="skill"></img><div>{skills[0]}</div></td>
+                    <td onClick={(e) => setSkills({...skills, skills: 5})}><img src="https://via.placeholder.com/42" alt="skill"></img><div>{skills[0]}</div></td>
                     <td></td>
                     <td onClick={handleSkills}><img src="https://via.placeholder.com/42" alt="skill"></img><div>{skills[1]}</div></td>
                     <td onClick={handleSkills}><img src="https://via.placeholder.com/42" alt="skill"></img><div>{skills[2]}</div></td>
