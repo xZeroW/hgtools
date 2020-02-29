@@ -4,8 +4,8 @@ import App from 'App';
 import * as serviceWorker from 'serviceWorker';
 
 // import 'assets/css/index.css';
-import 'assets/css/sb-admin-2.min.css';
-import 'assets/css/all.min.css';
+// import 'assets/css/sb-admin-2.min.css';
+// import 'assets/css/all.min.css';
 
 ReactDOM.render(<App />, document.getElementById('root'));
 

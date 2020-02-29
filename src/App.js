@@ -6,6 +6,7 @@ import Dashboard from 'components/dashboard/Dashboard';
 import Stats from 'components/tools/Stats';
 import Tree from 'components/tools/Tree';
 import Register from 'components/register/register';
+import Login from 'components/login/login';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path='/stats' component={Stats} />
         <Route path='/tree' component={Tree} />
         <Route path='/register' component={Register} />
+        <Route path='/login' component={Login} />
       </Switch>
     </BrowserRouter>
   );
