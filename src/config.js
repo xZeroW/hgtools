@@ -1,3 +1,3 @@
 export const config = { 
-    API_URL:  'https://hgtools-backend.herokuapp.com' || 'http://localhost:3600'
+  API_URL:  process.env.API_URL || 'http://localhost:3600'
 };
