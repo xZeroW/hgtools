@@ -18,6 +18,15 @@ export default class Dashboard extends React.Component {
     authenticationService.currentUser.subscribe(x => this.setState({ currentUser: x }));
   }
 
+  handleToggle() {
+    document.body.classList.toggle('sidebar-toggle'); // $('body').toggleClass('sidebar-toggled');
+    document.getElementById('accordionSidebar').classList.toggle('toggled');
+    //$('.sidebar').toggleClass('toggled');
+    // if ($('.sidebar').hasClass('toggled')) {
+    //   $('.sidebar .collapse').collapse('hide');
+    // }
+  }
+
   logout() {
     authenticationService.logout();
     history.go(0);
@@ -86,7 +95,7 @@ export default class Dashboard extends React.Component {
 
             {/* <!-- Sidebar Toggler (Sidebar) --> */}
             <div className="text-center d-none d-md-inline">
-              <button className="rounded-circle border-0" id="sidebarToggle"></button>
+              <button className="rounded-circle border-0" id="sidebarToggle" onClick={this.handleToggle}></button>
             </div>
 
           </ul>
@@ -102,7 +111,7 @@ export default class Dashboard extends React.Component {
               <nav className="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
                 {/* <!-- Sidebar Toggle (Topbar) --> */}
-                <button id="sidebarToggleTop" className="btn btn-link d-md-none rounded-circle mr-3">
+                <button id="sidebarToggleTop" className="btn btn-link d-md-none rounded-circle mr-3" onClick={this.handleToggle}>
                   <i className="fa fa-bars"></i>
                 </button>
 
@@ -147,7 +156,7 @@ export default class Dashboard extends React.Component {
                         <li className="nav-item dropdown no-arrow">
                           <Link className="nav-link dropdown-toggle" to="/" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span className="mr-2 d-none d-lg-inline text-gray-600 small">{currentUser.username}</span>
-                            <img className="img-profile rounded-circle" src="https://via.placeholder.com/60" alt="" />
+                            <i className="fas fa-user fa-lg"></i>
                           </Link>
                           {/* <!-- Dropdown - User Information --> */}
                           <div className="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
