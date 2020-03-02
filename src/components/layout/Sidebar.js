@@ -55,13 +55,6 @@ export default function Sidebar() {
           <span>Builds</span></Link>
       </li>
 
-      {/* <!-- Nav Item - Tables --> */}
-      <li className="nav-item">
-        <Link className="nav-link" to="tables.html">
-          <i className="fas fa-fw fa-table"></i>
-          <span>Tables</span></Link>
-      </li>
-
       {/* <!-- Divider --> */}
       <hr className="sidebar-divider d-none d-md-block" />
 
