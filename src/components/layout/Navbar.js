@@ -1,92 +1,119 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-function Navbar() {
-  return (
-    <nav className="navbar navbar-expand-lg navbar-transparent navbar-light headroom bg-primary">
-      <div className="container">
-        <Link className="navbar-brand mr-lg-5" to="/">HGTools</Link>
-        <button className="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
-          <span className="navbar-toggler-icon"></span>
+import { authenticationService } from '_services/auth.service';
+import { history } from '_helpers/history';
+
+export default class Navbar extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      currentUser: authenticationService.currentUserValue
+    };
+  }
+
+  componentDidMount() {
+    authenticationService.currentUser.subscribe(x => this.setState({ currentUser: x }));
+  }
+
+  logout() {
+    authenticationService.logout();
+    history.go(0);
+  }
+
+  handleToggle(){
+    document.body.classList.toggle('sidebar-toggle');
+    document.getElementById('accordionSidebar').classList.toggle('toggled');
+  }
+  render(){
+    const { currentUser } = this.state;
+    return (
+      <nav className="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+        {/* <!-- Sidebar Toggle (Topbar) --> */}
+        <button id="sidebarToggleTop" className="btn btn-link d-md-none rounded-circle mr-3" onClick={this.handleToggle}>
+          <i className="fa fa-bars"></i>
         </button>
-        <div className="navbar-collapse collapse" id="navbar_global">
-          <div className="navbar-collapse-header">
-            <div className="row">
-              <div className="col-6 collapse-brand">
-                <a href="../../../index.html">
-                  <img src="assets/img/brand/blue.png" alt="" />
-                </a>
-              </div>
-              <div className="col-6 collapse-close">
-                <button type="button" className="navbar-toggler collapsed" data-toggle="collapse" data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
-                  <span></span>
-                  <span></span>
-                </button>
-              </div>
+
+        {/* <!-- Topbar Search --> */}
+        <form className="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+          <div className="input-group">
+            <input type="text" className="form-control bg-light border-0 small" placeholder="Search builds..." aria-label="Search" aria-describedby="basic-addon2" />
+            <div className="input-group-append">
+              <button className="btn btn-primary" type="button">
+                <i className="fas fa-search fa-sm"></i>
+              </button>
             </div>
           </div>
-          <ul className="navbar-nav navbar-nav-hover align-items-lg-center">
-            <li className="nav-item dropdown">
-              <a href="/" className="nav-link" data-toggle="dropdown" role="button">
-                <i className="ni ni-ui-04 d-lg-none"></i>
-                <span className="nav-link-inner--text">Tools</span>
-              </a>
-              <div className="dropdown-menu dropdown-menu-xl">
-                <div className="dropdown-menu-inner">
-                  <a href="/stats" className="media d-flex align-items-center">
-                    <div className="icon icon-shape bg-gradient-primary rounded-circle text-white">
-                      <i className="ni ni-spaceship"></i>
-                    </div>
-                    <div className="media-body ml-3">
-                      <h6 className="heading text-primary mb-md-1">Stats</h6>
-                      <p className="description d-none d-md-inline-block mb-0">Learn how to use compiling Scss, change brand colors and more.</p>
-                    </div>
-                  </a>
-                  <a href="/tree" className="media d-flex align-items-center">
-                    <div className="icon icon-shape bg-gradient-success rounded-circle text-white">
-                      <i className="ni ni-palette"></i>
-                    </div>
-                    <div className="media-body ml-3">
-                      <h6 className="heading text-primary mb-md-1">Passive Tree</h6>
-                      <p className="description d-none d-md-inline-block mb-0">Learn more about colors, typography, icons and the grid system we used for .</p>
-                    </div>
-                  </a>
-                </div>
-              </div>
-            </li>
-            <li className="nav-item dropdown">
-              <a href="/" className="nav-link" data-toggle="dropdown" role="button">
-                <i className="ni ni-collection d-lg-none"></i>
-                <span className="nav-link-inner--text">Examples</span>
-              </a>
-              <div className="dropdown-menu">
-                <a href="../examples/landing.html" className="dropdown-item">Landing</a>
-                <a href="../examples/profile.html" className="dropdown-item">Profile</a>
-                <a href="../examples/login.html" className="dropdown-item">Login</a>
-                <a href="../examples/register.html" className="dropdown-item">Register</a>
-              </div>
-            </li>
-          </ul>
-          <ul className="navbar-nav align-items-lg-center ml-lg-auto">
-            <li className="nav-item d-none d-lg-block ml-lg-4">
-              <a href="/register" className="btn btn-neutral btn-icon">
-                <span className="btn-inner--icon">
-                  <i className="fa fa-user-plus mr-2"></i>
-                </span>
-                <span className="nav-link-inner--text">Register</span>
-              </a>
-              <a href="/" className="btn btn-neutral btn-icon">
-                <span className="btn-inner--icon">
-                  <i className="fas fa-user-check mr-2"></i>
-                </span>
-                <span className="nav-link-inner--text">Login</span>
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-  );
-}
+        </form>
 
-export default Navbar;
+        {/* <!-- Topbar Navbar --> */}
+        <ul className="navbar-nav ml-auto">
+
+          {/* <!-- Nav Item - Search Dropdown (Visible Only XS) --> */}
+          <li className="nav-item dropdown no-arrow d-sm-none">
+            <Link className="nav-link dropdown-toggle" to="/" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i className="fas fa-search fa-fw"></i>
+            </Link>
+            {/* <!-- Dropdown - Messages --> */}
+            <div className="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
+              <form className="form-inline mr-auto w-100 navbar-search">
+                <div className="input-group">
+                  <input type="text" className="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2" />
+                  <div className="input-group-append">
+                    <button className="btn btn-primary" type="button">
+                      <i className="fas fa-search fa-sm"></i>
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </li>
+          {/* <!-- Nav Item - User Information --> */}
+          {currentUser ? 
+            (
+              <ul className="navbar-nav">
+                <li className="nav-item dropdown no-arrow">
+                  <Link className="nav-link dropdown-toggle" to="/" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span className="mr-2 d-none d-lg-inline text-gray-600 small">{currentUser.username}</span>
+                    <i className="fas fa-user fa-lg"></i>
+                  </Link>
+                  {/* <!-- Dropdown - User Information --> */}
+                  <div className="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                    <Link className="dropdown-item" to="/">
+                      <i className="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+    Profile
+                    </Link>
+                    <Link className="dropdown-item" to="/">
+                      <i className="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+    My builds
+                    </Link>
+                    <Link className="dropdown-item" to="/">
+                      <i className="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+    Activity Log
+                    </Link>
+                    <div className="dropdown-divider"></div>
+                    <Link className="dropdown-item" to="/" data-toggle="modal" data-target="#logoutModal">
+                      <i className="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+    Logout
+                    </Link>
+                  </div>
+                </li>
+              </ul>
+            ):(
+              <ul className="navbar-nav">
+                <li className="nav-item">
+                  <Link to="/register" className="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm mr-2">Register</Link>
+                </li>
+                <li className="nav-item">
+                  <Link to="/login" className="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">Login</Link>
+                </li>
+              </ul>
+            )}
+        </ul>
+
+      </nav>
+    );
+  }
+}
