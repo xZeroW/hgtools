@@ -46,7 +46,10 @@ export default class Dashboard extends React.Component {
             <footer className="sticky-footer bg-white">
               <div className="container my-auto">
                 <div className="copyright text-center my-auto">
-                  <span>This site is fan-made and not affiliated with Curacha Games in any way.</span>
+                  <span>
+                    This site is fan-made and not affiliated with Curacha Games in any way.<br /> <br />
+                    <a className="copyrighted-badge" title="Copyrighted.com Registered &amp; Protected" rel="noopener noreferrer" target="_blank" href="https://www.copyrighted.com/website/BaN86VhfErI9Rli6"><img alt="Copyrighted.com Registered &amp; Protected" border="0" width="125" height="25" srcset="https://static.copyrighted.com/badges/125x25/04_1_2x.png 2x" src="https://static.copyrighted.com/badges/125x25/04_1.png" /></a><script src="https://static.copyrighted.com/badges/helper.js"></script>
+                  </span>
                 </div>
               </div>
             </footer>
