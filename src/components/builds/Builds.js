@@ -1,7 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 import React from 'react';
 import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
 import ReactLoading from 'react-loading';
 
 import { authenticationService } from '_services/auth.service';
@@ -105,7 +104,3 @@ export default class Builds extends React.Component {
     );
   }
 }
-
-Builds.propTypes = {
-  search: PropTypes.string
-};
