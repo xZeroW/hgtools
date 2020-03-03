@@ -1,19 +1,33 @@
 /* eslint-disable react/no-unescaped-entities */
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import ReactLoading from 'react-loading';
 
 import { authenticationService } from '_services/auth.service';
 import { history } from '_helpers/history';
-
-
 import Sidebar from 'components/layout/Sidebar';
 import Navbar from 'components/layout/Navbar';
+import BuildList from 'components/builds/BuildList';
 
-export default class Dashboard extends React.Component {
+export default class Builds extends React.Component {
+
+  constructor()  {
+    super();
+    this.state = {
+      isLoading: true
+    };
+  }
+
+  componentDidMount(){
+    this.setState({ isLoading: false });
+  }
+
   logout() {
     authenticationService.logout();
     history.go(0);
   }
+
   render() {
     document.body.classList.add('page-top');
     return (
@@ -34,7 +48,10 @@ export default class Dashboard extends React.Component {
               <div className="container-fluid">
 
                 {/* <!-- Page Heading --> */}
-                <h1 className="h3 mb-4 text-gray-800">Blank Page</h1>
+                <h1 className="h3 mb-4 text-gray-800">Builds</h1>
+                <div>
+                  {this.state.isLoading ? <ReactLoading type='spin' color="grey" /> : <BuildList />}
+                </div>
 
               </div>
               {/* <!-- /.container-fluid --> */}
@@ -88,3 +105,7 @@ export default class Dashboard extends React.Component {
     );
   }
 }
+
+Builds.propTypes = {
+  search: PropTypes.string
+};

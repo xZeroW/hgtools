@@ -7,6 +7,7 @@ import Stats from 'components/tools/Stats';
 import Tree from 'components/tools/Tree';
 import Register from 'components/register/register';
 import Login from 'components/login/login';
+import BuildList from 'components/builds/Builds';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path='/tree' component={Tree} />
         <Route path='/register' component={Register} />
         <Route path='/login' component={Login} />
+        <Route path='/builds' render={(props) => <BuildList {...props} />} />
       </Switch>
     </BrowserRouter>
   );
