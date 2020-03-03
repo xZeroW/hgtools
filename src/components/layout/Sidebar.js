@@ -45,9 +45,6 @@ export default function Sidebar() {
         </div>
       </li>
 
-      {/* <!-- Divider --> */}
-      <hr className="sidebar-divider" />
-
       {/* <!-- Nav Item - Builds --> */}
       <li className="nav-item">
         <Link className="nav-link" to="/builds">
