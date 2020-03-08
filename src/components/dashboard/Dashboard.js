@@ -34,7 +34,7 @@ export default class Dashboard extends React.Component {
               <div className="container-fluid">
 
                 {/* <!-- Page Heading --> */}
-                <h1 className="h3 mb-4 text-gray-800">Blank Page</h1>
+                <h1 className="h3 mb-4 text-gray-800">This will be a news page</h1>
 
               </div>
               {/* <!-- /.container-fluid --> */}
@@ -60,11 +60,6 @@ export default class Dashboard extends React.Component {
 
         </div>
         {/* <!-- End of Page Wrapper --> */}
-
-        {/* <!-- Scroll to Top Button--> */}
-        <Link className="scroll-to-top rounded" to="#page-top">
-          <i className="fas fa-angle-up"></i>
-        </Link>
 
         {/* <!-- Logout Modal--> */}
         <div className="modal fade" id="logoutModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

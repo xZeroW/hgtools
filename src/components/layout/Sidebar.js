@@ -22,8 +22,8 @@ export default function Sidebar() {
       <hr className="sidebar-divider my-0" />
 
       {/* <!-- Nav Item - Dashboard --> */}
-      <li className="nav-item active">
-        <Link className="nav-link" to="/">
+      <li className="nav-item">
+        <Link className="nav-link" to="/" >
           <i className="fas fa-home"></i>
           <span>Home</span></Link>
       </li>
