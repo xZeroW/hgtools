@@ -1,20 +1,11 @@
 /* eslint-disable react/no-unescaped-entities */
 import React from 'react';
-import { Link } from 'react-router-dom';
 
-import { authenticationService } from '_services/auth.service';
-import { history } from '_helpers/history';
 import Sidebar from 'components/layout/Sidebar';
 import Navbar from 'components/layout/Navbar';
 import BuildList from 'components/builds/BuildList';
 
 export default class Builds extends React.Component {
-
-  logout() {
-    authenticationService.logout();
-    history.go(0);
-  }
-
   render() {
     document.body.classList.add('page-top');
     return (
@@ -67,31 +58,8 @@ export default class Builds extends React.Component {
           {/* <!-- End of Content Wrapper --> */}
 
         </div>
-        {/* <!-- End of Page Wrapper --> */}
-
-        {/* <!-- Scroll to Top Button--> */}
-        <Link className="scroll-to-top rounded" to="#page-top">
-          <i className="fas fa-angle-up"></i>
-        </Link>
 
         {/* <!-- Logout Modal--> */}
-        <div className="modal fade" id="logoutModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div className="modal-dialog" role="document">
-            <div className="modal-content">
-              <div className="modal-header">
-                <h5 className="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                <button className="close" type="button" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">×</span>
-                </button>
-              </div>
-              <div className="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-              <div className="modal-footer">
-                <button className="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                <Link className="btn btn-primary" onClick={this.logout} to="/">Logout</Link>
-              </div>
-            </div>
-          </div>
-        </div>
       </React.Fragment>
     );
   }

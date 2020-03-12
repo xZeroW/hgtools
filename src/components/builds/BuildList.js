@@ -25,9 +25,6 @@ export default class BuildList extends React.Component {
       .catch(function (error) {
         // handle error
         console.log(error);
-      })
-      .then(function () {
-        // always executed
       });
   }
   render(){
@@ -37,22 +34,23 @@ export default class BuildList extends React.Component {
         {this.state.isLoading ? <ReactLoading type='spin' color="grey" /> : 
           (this.state.data.map(build =>
             <div key={build.id} className="col-lg-6">
-              <Link to={'/builds/' + build.id}>
-                <div  className="card mb-4 py-3 border-left-primary">
-                  <div className="card-body">
-                    <div className="row no-gutters align-items-center">
-                      <div className="col mr-2">
-                        <div className="h5 font-weight-bold text-gray-800">
-                          <TruncateString text={'Title:' + build.title} truncateAt={100} />
-                        </div>
+              <div  className="card mb-4 py-3 border-left-primary">
+                <div className="card-body">
+                  <div className="row no-gutters align-items-center">
+                    <div className="col mr-2">
+                      <div className="h5 font-weight-bold text-gray-800">
+                        <Link to={'/builds/' + build.id}>
+                          <TruncateString text={build.title} truncateAt={100} />
+                        </Link>
                       </div>
-                      <div className="col-auto">
-                        <i className="fas fa-user fa-2x text-gray-300"></i>
-                      </div>
+                    </div>
+                    <div className="col-auto">
+                      <i className="fas fa-user fa-2x text-gray-300"></i>
                     </div>
                   </div>
                 </div>
-              </Link>
+              </div>
+              
             </div>
           ))}
         
