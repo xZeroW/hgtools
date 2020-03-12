@@ -33,7 +33,7 @@ export default function Sidebar() {
 
       {/* <!-- Nav Item - Utilities Collapse Menu --> */}
       <li className="nav-item">
-        <Link className="nav-link collapsed" to="/" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
+        <Link className="nav-link collapsed" to="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
           <i className="fas fa-fw fa-wrench"></i>
           <span>Tools</span>
         </Link>
