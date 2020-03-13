@@ -6,7 +6,7 @@ function handleToggle(){
   document.getElementById('accordionSidebar').classList.toggle('toggled');
 }
 
-export default function Sidebar() {
+const Sidebar = () => {
   return(
     <ul className="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
@@ -64,4 +64,6 @@ export default function Sidebar() {
 
     </ul>
   );
-}
+};
+
+export default Sidebar;

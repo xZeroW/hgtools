@@ -19,18 +19,19 @@ export default class BuildList extends React.Component {
   componentDidMount() {
     Axios.get( config.API_URL + '/builds')
       .then((response) => {
+        this.setState({ isLoading: false });
         // handle success
-        this.setState({ isLoading: false, data: response.data  });
+        if(response.data.length > 0){
+          this.setState({ data: response.data  });
+        }
       })
-      .catch(function (error) {
+      .catch(function () {
         // handle error
-        console.log(error);
       });
   }
   render(){
     return(
       <React.Fragment>
-        
         {this.state.isLoading ? <ReactLoading type='spin' color="grey" /> : 
           (this.state.data.map(build =>
             <div key={build.id} className="col-lg-6">
@@ -50,10 +51,8 @@ export default class BuildList extends React.Component {
                   </div>
                 </div>
               </div>
-              
             </div>
           ))}
-        
       </React.Fragment>
     );
   }

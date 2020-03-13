@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import App from 'App';
 import * as serviceWorker from 'serviceWorker';
 
-// import 'assets/css/index.css';
 import 'assets/css/sb-admin-2.min.css';
 import 'assets/fontawesome-free/css/all.min.css';
 

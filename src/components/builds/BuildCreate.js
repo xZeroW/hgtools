@@ -1,13 +1,12 @@
 import React from 'react';
-import { useQuill } from 'react-quilljs';
 
-import Navbar from 'components/layout/Navbar';
 import Sidebar from 'components/layout/Sidebar';
-import 'quill/dist/quill.snow.css';
+import Navbar from 'components/layout/Navbar';
+import Quill from 'components/quill/Quill';
 
 const BuildCreate = () => {
-  const { quillRef } = useQuill();
-  return ( 
+  document.body.classList.add('page-top');
+  return (
     <React.Fragment>
       <div id="wrapper">
 
@@ -23,14 +22,21 @@ const BuildCreate = () => {
 
             {/* <!-- Begin Page Content --> */}
             <div className="container-fluid">
+
+              {/* <!-- Page Heading --> */}
+              <h1 className="h3 mb-4 text-gray-800">Post a build</h1>
               {/* <!-- Content Row --> */}
               <div className="row">
-
-                {/* <!-- Border Left Utilities --> */}
-                <div className="col-12">
-                  <div ref={quillRef} />
+                <div className="col">
+                  <form>
+                    <div className="form-group">
+                      <input type="text" className="form-control bg-light border-0 small" placeholder="Build title" aria-describedby="basic-addon2" />
+                    </div>
+                    <div className="form-group">
+                      <Quill />
+                    </div>
+                  </form>
                 </div>
-                  
               </div>
 
             </div>
@@ -56,6 +62,8 @@ const BuildCreate = () => {
         {/* <!-- End of Content Wrapper --> */}
 
       </div>
+
+      {/* <!-- Logout Modal--> */}
     </React.Fragment>
   );
 };
