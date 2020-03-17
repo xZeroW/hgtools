@@ -1,59 +1,66 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Axios from 'axios';
 import ReactLoading from 'react-loading';
 import { Link } from 'react-router-dom';
-import TruncateString from 'react-truncate-string';
-
+import { MDBCol, MDBCard, MDBCardBody, MDBCardImage, MDBCardTitle, MDBRow } from 'mdbreact';
 
 import { config } from 'config';
 
-export default class BuildList extends React.Component {
-  constructor()  {
-    super();
-    this.state = {
-      isLoading: true,
-      data: []
-    };
-  }
+export default function BuildList() {
 
-  componentDidMount() {
+  const [isLoading, setIsLoading] = useState(true);
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
     Axios.get( config.API_URL + '/builds')
       .then((response) => {
-        this.setState({ isLoading: false });
-        // handle success
-        if(response.data.length > 0){
-          this.setState({ data: response.data  });
-        }
+        setIsLoading(false);
+        setData(response.data);
       })
       .catch(function () {
         // handle error
       });
-  }
-  render(){
-    return(
-      <React.Fragment>
-        {this.state.isLoading ? <ReactLoading type='spin' color="grey" /> : 
-          (this.state.data.map(build =>
-            <div key={build.id} className="col-lg-6">
-              <div  className="card mb-4 py-3 border-left-primary">
-                <div className="card-body">
-                  <div className="row no-gutters align-items-center">
-                    <div className="col mr-2">
-                      <div className="h5 font-weight-bold text-gray-800">
-                        <Link to={'/builds/' + build.id}>
-                          <TruncateString text={build.title} truncateAt={100} />
-                        </Link>
-                      </div>
-                    </div>
-                    <div className="col-auto">
-                      <i className="fas fa-user fa-2x text-gray-300"></i>
-                    </div>
+  }, []);
+  
+  return(
+    <React.Fragment>
+      <MDBRow>
+        {isLoading ? <ReactLoading type='spin' color="grey" /> : 
+          (data.map(build =>
+            <MDBCol key={build.id} md="4" className="mb-4">
+              <MDBCard>
+                <MDBCardBody className="d-flex flex-row">
+
+                  <MDBCardImage src="https://mdbootstrap.com/img/Photos/Avatars/avatar-8.jpg" className="rounded-circle mr-3 img-fluid" height="50px" width="50px" alt="avatar" />
+
+                  <div>
+                    <Link to={'/builds/' + build.id}>
+                      <MDBCardTitle className="font-weight-bold mb-2 text-truncate">{build.title}</MDBCardTitle>
+                    </Link>
+                    <p className="card-text">
+                      <i className="far fa-clock pr-2"></i>
+                      {build.createdAt}
+                    </p>
                   </div>
-                </div>
-              </div>
-            </div>
+                </MDBCardBody>
+                
+                <Link to={'/builds/' + build.id}>
+                  <MDBCardImage className="card-img-top rounded-0 img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Food/full page/2.jpg" alt="" />
+                  <div className="mask rgba-white-slight"></div>
+                </Link>
+                
+
+                <MDBCardBody>
+                  <div className="collapse-content">
+                    <i className="fas fa-share-alt text-muted float-right p-1 my-1" data-toggle="tooltip" data-placement="top" title="Share this post"></i>
+                    <i className="fas fa-heart text-muted float-right p-1 my-1 mr-3" data-toggle="tooltip" data-placement="top" title="I like it"></i>
+                  </div>
+                </MDBCardBody>
+
+              </MDBCard>
+            </MDBCol>
           ))}
-      </React.Fragment>
-    );
-  }
+      </MDBRow>
+    </React.Fragment>
+  );
 }

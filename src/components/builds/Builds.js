@@ -3,6 +3,7 @@ import React from 'react';
 import Sidebar from 'components/layout/Sidebar';
 import Navbar from 'components/layout/Navbar';
 import BuildList from 'components/builds/BuildList';
+import { MDBContainer } from 'mdbreact';
 
 const Builds = () => {
   document.body.classList.add('page-top');
@@ -26,12 +27,12 @@ const Builds = () => {
               {/* <!-- Page Heading --> */}
               <h1 className="h3 mb-4 text-gray-800">Latest Builds</h1>
               {/* <!-- Content Row --> */}
-              <div className="row">
+              <MDBContainer>
 
                 {/* <!-- Border Left Utilities --> */}
                   
                 <BuildList />
-              </div>
+              </MDBContainer>
 
             </div>
             {/* <!-- /.container-fluid --> */}
