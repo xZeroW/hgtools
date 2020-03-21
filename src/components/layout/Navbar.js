@@ -65,12 +65,6 @@ export default class Navbar extends React.Component {
             { currentUser ? 
               <MDBNavbarNav right>
                 <MDBNavItem>
-                  <MDBNavLink to="#"><MDBIcon fab icon="facebook-f" /></MDBNavLink>
-                </MDBNavItem>
-                <MDBNavItem>
-                  <MDBNavLink to="#"><MDBIcon fab icon="twitter" /></MDBNavLink>
-                </MDBNavItem>
-                <MDBNavItem>
                   <MDBDropdown>
                     <MDBDropdownToggle nav>
                       <span className="mr-2">{currentUser.username}</span>
