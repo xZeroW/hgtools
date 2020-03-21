@@ -1,6 +1,5 @@
 import React from 'react';
 
-import Sidebar from 'components/layout/Sidebar';
 import Navbar from 'components/layout/Navbar';
 import Quill from 'components/quill/Quill';
 
@@ -9,7 +8,6 @@ const BuildCreate = () => {
   return (
     <React.Fragment>
       <div id="wrapper">
-        <Sidebar />
         <div id="content-wrapper" className="d-flex flex-column">
           <div id="content">
             <Navbar />
