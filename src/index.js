@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom';
 import App from 'App';
 import * as serviceWorker from 'serviceWorker';
 
-import 'assets/css/sb-admin-2.min.css';
+import 'bootstrap-css-only/css/bootstrap.min.css';
+import 'mdbreact/dist/css/mdb.css';
 import 'assets/fontawesome-free/css/all.min.css';
 
 ReactDOM.render(<App />, document.getElementById('root'));

@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Axios from 'axios';
-import ReactLoading from 'react-loading';
 import { Link } from 'react-router-dom';
-import { MDBCol, MDBCard, MDBCardBody, MDBCardImage, MDBCardTitle, MDBRow } from 'mdbreact';
+import { MDBCol, MDBCard, MDBCardBody, MDBCardImage, MDBCardTitle, MDBIcon } from 'mdbreact';
 
 import { config } from 'config';
 
@@ -24,43 +23,41 @@ export default function BuildList() {
   
   return(
     <React.Fragment>
-      <MDBRow>
-        {isLoading ? <ReactLoading type='spin' color="grey" /> : 
-          (data.map(build =>
-            <MDBCol key={build.id} md="4" className="mb-4">
-              <MDBCard>
-                <MDBCardBody className="d-flex flex-row">
-
-                  <MDBCardImage src="https://mdbootstrap.com/img/Photos/Avatars/avatar-8.jpg" className="rounded-circle mr-3 img-fluid" height="50px" width="50px" alt="avatar" />
-
-                  <div>
-                    <Link to={'/builds/' + build.id}>
-                      <MDBCardTitle className="font-weight-bold mb-2 text-truncate">{build.title}</MDBCardTitle>
-                    </Link>
-                    <p className="card-text">
-                      <i className="far fa-clock pr-2"></i>
-                      {build.createdAt}
-                    </p>
-                  </div>
-                </MDBCardBody>
+      {isLoading ? 
+        <div className="spinner-border text-primary" role="status">
+          <span className="sr-only">Loading...</span>
+        </div> : 
+        (data.map(build =>
+          <MDBCol key={build.id} md="4" >
+            <MDBCard className="mb-4">
+              <MDBCardBody>
+                <img src="http://via.placeholder.com/100" className="float-left rounded-circle img-fluid" height="50px" width="50px" alt="avatar" />
+                <div style={{ paddingLeft: '60px'}}>
+                  <Link to={'/builds/' + build.id}>
+                    <MDBCardTitle className="card-title text-truncate">{build.title}</MDBCardTitle>
+                  </Link>
+                  <p className="card-text text-truncate">
+                    <i className="far fa-clock pr-2"></i>
+                    {build.createdAt}
+                  </p></div>
+              </MDBCardBody>
                 
-                <Link to={'/builds/' + build.id}>
-                  <MDBCardImage className="card-img-top rounded-0 img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Food/full page/2.jpg" alt="" />
-                  <div className="mask rgba-white-slight"></div>
-                </Link>
+              <Link to={'/builds/' + build.id}>
+                <MDBCardImage className="card-img-top rounded-0 img-fluid" src="http://via.placeholder.com/1280x720" alt="" />
+                <div className="mask rgba-white-slight"></div>
+              </Link>
                 
 
-                <MDBCardBody>
-                  <div className="collapse-content">
-                    <i className="fas fa-share-alt text-muted float-right p-1 my-1" data-toggle="tooltip" data-placement="top" title="Share this post"></i>
-                    <i className="fas fa-heart text-muted float-right p-1 my-1 mr-3" data-toggle="tooltip" data-placement="top" title="I like it"></i>
-                  </div>
-                </MDBCardBody>
+              <MDBCardBody>
+                <div className="collapse-content">
+                  <MDBIcon icon="share-alt" className="text-muted float-right p-1 my-1" data-toggle="tooltip" data-placement="top" title="Share this post"></MDBIcon>
+                  <MDBIcon icon="thumbs-up" far className="text-muted float-right p-1 my-1 mr-3" data-toggle="tooltip" data-placement="top" title="I like it"></MDBIcon>                    
+                </div>
+              </MDBCardBody>
 
-              </MDBCard>
-            </MDBCol>
-          ))}
-      </MDBRow>
+            </MDBCard>
+          </MDBCol>
+        ))}
     </React.Fragment>
   );
 }

@@ -1,85 +1,21 @@
-/* eslint-disable react/no-unescaped-entities */
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { MDBContainer } from 'mdbreact';
 
-import { authenticationService } from '_services/auth.service';
-import { history } from '_helpers/history';
-
-
-import Sidebar from 'components/layout/Sidebar';
 import Navbar from 'components/layout/Navbar';
 
-export default class Dashboard extends React.Component {
-  logout() {
-    authenticationService.logout();
-    history.go(0);
-  }
-  render() {
-    document.body.classList.add('page-top');
-    return (
-      <React.Fragment>
-        <div id="wrapper">
-
-          <Sidebar />
-
-          {/* <!-- Content Wrapper --> */}
-          <div id="content-wrapper" className="d-flex flex-column">
-
-            {/* <!-- Main Content --> */}
-            <div id="content">
-
-              <Navbar />
-
-              {/* <!-- Begin Page Content --> */}
-              <div className="container-fluid">
-
-                {/* <!-- Page Heading --> */}
-                <h1 className="h3 mb-4 text-gray-800">This will be a news page</h1>
-
-              </div>
-              {/* <!-- /.container-fluid --> */}
-
-            </div>
-            {/* <!-- End of Main Content --> */}
-
-            {/* <!-- Footer --> */}
-            <footer className="sticky-footer bg-white">
-              <div className="container my-auto">
-                <div className="copyright text-center my-auto">
-                  <span>
-                    This site is fan-made and not affiliated with Curacha Games in any way.<br /> <br />
-                    <a className="copyrighted-badge" title="Copyrighted.com Registered &amp; Protected" rel="noopener noreferrer" target="_blank" href="https://www.copyrighted.com/website/BaN86VhfErI9Rli6"><img alt="Copyrighted.com Registered &amp; Protected" border="0" width="125" height="25" srcSet="https://static.copyrighted.com/badges/125x25/04_1_2x.png 2x" src="https://static.copyrighted.com/badges/125x25/04_1.png" /></a><script src="https://static.copyrighted.com/badges/helper.js"></script>
-                  </span>
-                </div>
-              </div>
-            </footer>
-            {/* <!-- End of Footer --> */}
-
-          </div>
-          {/* <!-- End of Content Wrapper --> */}
-
-        </div>
-        {/* <!-- End of Page Wrapper --> */}
-
-        {/* <!-- Logout Modal--> */}
-        <div className="modal fade" id="logoutModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div className="modal-dialog" role="document">
-            <div className="modal-content">
-              <div className="modal-header">
-                <h5 className="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                <button className="close" type="button" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">×</span>
-                </button>
-              </div>
-              <div className="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-              <div className="modal-footer">
-                <button className="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                <Link className="btn btn-primary" onClick={this.logout} to="/">Logout</Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </React.Fragment>
-    );
-  }
+export default function Dashboard() {
+  document.body.classList.add('white-skin');
+  return (
+    <React.Fragment>
+      <Navbar />
+      <div id="main">
+        <MDBContainer className="text-center mt-5 pt-5">
+          <h2>This Navbar is fixed</h2>
+          <h5>It will always stay visible on the top, even when you scroll down</h5>
+          <br/>
+          <p>Full page intro with background image will be always displayed in full screen mode, regardless of device</p>
+        </MDBContainer>
+      </div>
+    </React.Fragment>
+  );
 }

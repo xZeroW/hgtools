@@ -1,17 +1,26 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
+
+import { MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavbarToggler, MDBCollapse, MDBNavItem, MDBNavLink, MDBIcon, MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem, MDBBtn } from 'mdbreact';
 
 import { authenticationService } from '_services/auth.service';
-import LogoutModal from './LogoutModal';
-import NavLoggedIn from './NavLoggedIn';
+import { history } from '_helpers/history';
 
 export default class Navbar extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      currentUser: authenticationService.currentUserValue
+      currentUser: authenticationService.currentUserValue,
+      collapse: false
     };
+
+    this.handleToggle = this.handleToggle.bind(this);
+  }
+
+  logout() {
+    authenticationService.logout();
+    history.go(0);
   }
 
   componentDidMount() {
@@ -19,72 +28,83 @@ export default class Navbar extends React.Component {
   }
 
   handleToggle(){
-    document.body.classList.toggle('sidebar-toggle');
-    document.getElementById('accordionSidebar').classList.toggle('toggled');
+    this.setState({
+      collapse: !this.state.collapse,
+    });
   }
+
   render(){
     const { currentUser } = this.state;
     return (
-      <React.Fragment>
-        <nav className="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-
-          {/* <!-- Sidebar Toggle (Topbar) --> */}
-          <button id="sidebarToggleTop" className="btn btn-link d-md-none rounded-circle mr-3" onClick={this.handleToggle}>
-            <i className="fa fa-bars"></i>
-          </button>
-
-          {/* <!-- Topbar Search --> */}
-          <form className="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-            <div className="input-group">
-              <input type="text" className="form-control bg-light border-0 small" placeholder="Search builds..." aria-label="Search" aria-describedby="basic-addon2" />
-              <div className="input-group-append">
-                <button className="btn btn-primary" type="button">
-                  <i className="fas fa-search fa-sm"></i>
-                </button>
-              </div>
-            </div>
-          </form>
-
-          {/* <!-- Topbar Navbar --> */}
-          <ul className="navbar-nav ml-auto">
-
-            {/* <!-- Nav Item - Search Dropdown (Visible Only XS) --> */}
-            <li className="nav-item dropdown no-arrow d-sm-none">
-              <Link className="nav-link dropdown-toggle" to="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i className="fas fa-search fa-fw"></i>
-              </Link>
-              {/* <!-- Dropdown - Messages --> */}
-              <div className="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
-                <form className="form-inline mr-auto w-100 navbar-search">
-                  <div className="input-group">
-                    <input type="text" className="form-control bg-light border-0 small" placeholder="Search builds..." aria-label="Search" aria-describedby="basic-addon2" />
-                    <div className="input-group-append">
-                      <button className="btn btn-primary" type="button">
-                        <i className="fas fa-search fa-sm"></i>
-                      </button>
-                    </div>
-                  </div>
-                </form>
-              </div>
-            </li>
-            {/* <!-- Nav Item - User Information --> */}
-            {currentUser ? 
-              (
-                <NavLoggedIn />
-              ):(
-                <ul className="navbar-nav">
-                  <li className="nav-item">
-                    <Link to="/register" className="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm mr-2">Register</Link>
-                  </li>
-                  <li className="nav-item">
-                    <Link to="/login" className="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">Login</Link>
-                  </li>
-                </ul>
-              )}
-          </ul>
-        </nav>
-        <LogoutModal />
-      </React.Fragment>
+      <header>
+        <MDBNavbar className="bg-primary" dark expand="md" scrolling fixed="top">
+          <MDBNavbarBrand href="/">
+            <strong>HGTools</strong>
+          </MDBNavbarBrand>
+          <MDBNavbarToggler onClick={ this.handleToggle } />
+          <MDBCollapse isOpen = { this.state.collapse } navbar>
+            <MDBNavbarNav left>
+              <MDBNavItem active>
+                <NavLink className="nav-link" to="/">Home</NavLink>
+              </MDBNavItem>
+              <MDBNavItem>
+                <NavLink className="nav-link" to="/builds">Builds</NavLink>
+              </MDBNavItem>
+              <MDBNavItem>
+                <MDBDropdown>
+                  <MDBDropdownToggle nav caret>
+                    <span className="mr-2">Tools</span>
+                  </MDBDropdownToggle>
+                  <MDBDropdownMenu>
+                    <MDBDropdownItem href="/stats">Status Calculator</MDBDropdownItem>
+                    <MDBDropdownItem href="/tree">Skill Tree</MDBDropdownItem>
+                  </MDBDropdownMenu>
+                </MDBDropdown>
+              </MDBNavItem>
+            </MDBNavbarNav>
+            { currentUser ? 
+              <MDBNavbarNav right>
+                <MDBNavItem>
+                  <MDBNavLink to="#"><MDBIcon fab icon="facebook-f" /></MDBNavLink>
+                </MDBNavItem>
+                <MDBNavItem>
+                  <MDBNavLink to="#"><MDBIcon fab icon="twitter" /></MDBNavLink>
+                </MDBNavItem>
+                <MDBNavItem>
+                  <MDBDropdown>
+                    <MDBDropdownToggle nav>
+                      <span className="mr-2">{currentUser.username}</span>
+                      <MDBIcon icon="user" />
+                    </MDBDropdownToggle>
+                    <MDBDropdownMenu>
+                      <MDBDropdownItem href="#">Profile</MDBDropdownItem>
+                      <MDBDropdownItem divider />
+                      <MDBDropdownItem href="/builds/create">New build</MDBDropdownItem>
+                      <MDBDropdownItem>My builds</MDBDropdownItem>
+                      <MDBDropdownItem divider />
+                      <MDBDropdownItem onClick={this.logout}>Logout</MDBDropdownItem>
+                    </MDBDropdownMenu>
+                  </MDBDropdown>
+                </MDBNavItem>
+              </MDBNavbarNav>
+              :
+              <MDBNavbarNav right>
+                <MDBNavItem>
+                  <MDBBtn size="sm" color="primary" href="/register">
+                    <MDBIcon className="mr-2" icon="user-plus" />
+                    Register
+                  </MDBBtn>
+                </MDBNavItem>
+                <MDBNavItem>
+                  <MDBBtn size="sm" color="primary" href="/login">
+                    <MDBIcon className="mr-2" icon="user" />
+                    Login
+                  </MDBBtn>
+                </MDBNavItem>
+              </MDBNavbarNav>}
+          </MDBCollapse>
+        </MDBNavbar>
+      </header>
     );
   }
 }
