@@ -1,10 +1,10 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
 
-import { MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavbarToggler, MDBCollapse, MDBNavItem, MDBNavLink, MDBIcon, MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem, MDBBtn } from 'mdbreact';
+import { MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavbarToggler, MDBCollapse, MDBNavItem, MDBIcon, MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem, MDBBtn, MDBNavLink } from 'mdbreact';
 
 import { authenticationService } from '_services/auth.service';
 import { history } from '_helpers/history';
+import DarkModeToggle from 'components/layout/DarkModeToggle';
 
 export default class Navbar extends React.Component {
   constructor(props) {
@@ -21,10 +21,6 @@ export default class Navbar extends React.Component {
   logout() {
     authenticationService.logout();
     history.go(0);
-  }
-
-  componentDidMount() {
-    authenticationService.currentUser.subscribe(x => this.setState({ currentUser: x }));
   }
 
   handleToggle(){
@@ -44,11 +40,11 @@ export default class Navbar extends React.Component {
           <MDBNavbarToggler onClick={ this.handleToggle } />
           <MDBCollapse isOpen = { this.state.collapse } navbar>
             <MDBNavbarNav left>
-              <MDBNavItem active>
-                <NavLink className="nav-link" to="/">Home</NavLink>
+              <MDBNavItem>
+                <MDBNavLink to="/">Home</MDBNavLink>
               </MDBNavItem>
               <MDBNavItem>
-                <NavLink className="nav-link" to="/builds">Builds</NavLink>
+                <MDBNavLink to="/builds">Builds</MDBNavLink>
               </MDBNavItem>
               <MDBNavItem>
                 <MDBDropdown>
@@ -72,11 +68,12 @@ export default class Navbar extends React.Component {
                     </MDBDropdownToggle>
                     <MDBDropdownMenu>
                       <MDBDropdownItem href="#">Profile</MDBDropdownItem>
-                      <MDBDropdownItem divider />
                       <MDBDropdownItem href="/builds/create">New build</MDBDropdownItem>
-                      <MDBDropdownItem>My builds</MDBDropdownItem>
-                      <MDBDropdownItem divider />
-                      <MDBDropdownItem onClick={this.logout}>Logout</MDBDropdownItem>
+                      <MDBDropdownItem href="#">My builds</MDBDropdownItem>
+                      <MDBDropdownItem href="#">
+                        <DarkModeToggle />
+                      </MDBDropdownItem>
+                      <MDBDropdownItem href="#" onClick={this.logout}>Logout</MDBDropdownItem>
                     </MDBDropdownMenu>
                   </MDBDropdown>
                 </MDBNavItem>

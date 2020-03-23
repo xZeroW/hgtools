@@ -1,17 +1,18 @@
 import React from 'react';
-import { MDBContainer } from 'mdbreact';
+import { MDBContainer, MDBRow, MDBCol } from 'mdbreact';
 
 import Navbar from 'components/layout/Navbar';
 
 export default function Dashboard() {
-  document.body.classList.add('white-skin');
   return (
     <React.Fragment>
       <Navbar />
       <div id="main">
-        <MDBContainer className="text-center mt-5 pt-5">
-          <h2>This will be a news page</h2>
-          <h5>or something like that</h5>
+        <MDBContainer className="text-left mt-5 pt-5">
+          <MDBRow>
+            <MDBCol md="8"><h5>or something like that</h5></MDBCol>
+            <MDBCol md="4"><h2>This will be a news page</h2></MDBCol>
+          </MDBRow>
         </MDBContainer>
       </div>
     </React.Fragment>

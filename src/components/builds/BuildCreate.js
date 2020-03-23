@@ -1,36 +1,47 @@
-import React from 'react';
+import React, { useState } from 'react';
+import Axios from 'axios';
+import { useQuill } from 'react-quilljs';
+import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBInput } from 'mdbreact';
 
+import 'quill/dist/quill.snow.css';
+
+import { config } from 'config';
 import Navbar from 'components/layout/Navbar';
-import Quill from 'components/quill/Quill';
+import { authHeader } from '_helpers/auth-header';
 
-const BuildCreate = () => {
-  document.body.classList.add('page-top');
+export default function BuildCreate() {
+
+  const [title, setTitle] = useState('');
+  const { quill, quillRef } = useQuill();
+
+  const saveBuild = (e) => {
+    e.preventDefault();
+    const content = quill.getContents();
+    Axios.post(`${config.API_URL}/builds`, { title, content }, { headers: authHeader() })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
     <React.Fragment>
-      <div id="wrapper">
-        <div id="content-wrapper" className="d-flex flex-column">
-          <div id="content">
-            <Navbar />
-            <div className="container-fluid">
-              <h1 className="h3 mb-4 text-gray-800">Post a build</h1>
-              <div className="row">
-                <div className="col">
-                  <form>
-                    <div className="form-group">
-                      <input type="text" className="form-control bg-light border-0 small" placeholder="Build title" aria-describedby="basic-addon2" />
-                    </div>
-                    <div className="form-group">
-                      <Quill />
-                    </div>
-                  </form>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+      <Navbar />
+      <div id="main">
+        <MDBContainer className="text-left mt-5 pt-5">
+          <MDBRow>
+            <MDBCol>
+              <form onSubmit={saveBuild}>
+                <MDBInput name="title" onChange={e => setTitle(e.target.value)} label="Build title" />
+                <div ref={quillRef} />
+                <MDBBtn type="submit">Post!</MDBBtn>
+              </form>
+            </MDBCol>
+          </MDBRow>
+        </MDBContainer>
       </div>
     </React.Fragment>
   );
-};
-
-export default BuildCreate;
+}

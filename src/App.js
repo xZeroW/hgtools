@@ -6,7 +6,7 @@ import Stats from 'components/tools/Stats';
 import Tree from 'components/tools/Tree';
 import Register from 'components/register/Register';
 import Login from 'components/login/Login';
-import Builds from 'components/builds/Builds';
+import BuildList from 'components/builds/BuildList';
 import BuildCreate from 'components/builds/BuildCreate';
 import PrivateRoute from '_components/PrivateRoute';
 
@@ -19,7 +19,7 @@ function App() {
         <Route path='/tree' component={Tree} />
         <Route path='/register' component={Register} />
         <Route path='/login' component={Login} />
-        <Route exact path='/builds' component={Builds} />
+        <Route exact path='/builds' component={BuildList} />
         <PrivateRoute path='/builds/create' component={BuildCreate} />
       </Switch>
     </BrowserRouter>
