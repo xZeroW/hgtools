@@ -17,7 +17,8 @@ export default function Build({title, id, creator, createdAt}) {
             <p className="card-text text-truncate">
               <i className="far fa-clock pr-2"></i>
               {createdAt}
-            </p></div>
+            </p>
+          </div>
         </MDBCardBody>
                 
         <Link to={'/builds/' + id}>

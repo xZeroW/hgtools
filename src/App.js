@@ -9,6 +9,7 @@ import Login from 'components/login/Login';
 import BuildList from 'components/builds/BuildList';
 import BuildCreate from 'components/builds/BuildCreate';
 import PrivateRoute from '_components/PrivateRoute';
+import BuildDetail from 'components/builds/BuildDetail';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path='/login' component={Login} />
         <Route exact path='/builds' component={BuildList} />
         <PrivateRoute path='/builds/create' component={BuildCreate} />
+        <Route exact path='/builds/:buildId' component={BuildDetail} />
       </Switch>
     </BrowserRouter>
   );

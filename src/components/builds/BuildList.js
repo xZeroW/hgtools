@@ -13,9 +13,9 @@ export default function BuildList() {
 
   useEffect(() => {
     Axios.get( config.API_URL + '/builds')
-      .then((response) => {
+      .then((res) => {
         setIsLoading(false);
-        setData(response.data);
+        setData(res.data);
       })
       .catch(function () {
         // handle error

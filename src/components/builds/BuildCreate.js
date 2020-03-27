@@ -36,7 +36,7 @@ export default function BuildCreate() {
               <form onSubmit={saveBuild}>
                 <MDBInput name="title" onChange={e => setTitle(e.target.value)} label="Build title" />
                 <div ref={quillRef} />
-                <MDBBtn type="submit">Post!</MDBBtn>
+                <MDBBtn color="primary" type="submit">Post!</MDBBtn>
               </form>
             </MDBCol>
           </MDBRow>
