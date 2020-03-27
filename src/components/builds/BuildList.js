@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Axios from 'axios';
-import { MDBContainer, MDBRow } from 'mdbreact';
+import { MDBContainer, MDBRow, MDBBtn } from 'mdbreact';
 
 import { config } from 'config';
 import Navbar from 'components/layout/Navbar';
@@ -10,9 +10,10 @@ export default function BuildList() {
 
   const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState([]);
+  const [page, setPage] = useState(0);
 
   useEffect(() => {
-    Axios.get( config.API_URL + '/builds')
+    Axios.get(`${config.API_URL}/builds/?limit=3`)
       .then((res) => {
         setIsLoading(false);
         setData(res.data);
@@ -21,21 +22,39 @@ export default function BuildList() {
         // handle error
       });
   }, []);
+
+
+  useEffect(() => {
+    Axios.get(`${config.API_URL}/builds/?limit=3&page=${page}`)
+      .then((res) => {
+        console.log(res.data);
+        setData(data.concat(res.data));
+      })
+      .catch(function () {
+        // handle error
+      });
+  }, [page]);
   
   return(
     <React.Fragment>
       <Navbar />
       <div id="main">
         <MDBContainer className="text-left mt-5 pt-5">
-          <MDBRow>
-            {isLoading ? 
+          {isLoading ? 
+            <MDBRow center>
               <div className="spinner-border text-primary" role="status">
                 <span className="sr-only">Loading...</span>
-              </div> : 
-              (data.map(build =>
+              </div>
+            </MDBRow>
+            : 
+            (<MDBRow>
+              {data.map(build =>
                 <Build title={build.title} key={build.id} id={build.id} createdAt={build.createdAt} creator={build.creator.username} />
-              ))}
-          </MDBRow>
+              )}
+                  
+            </MDBRow>)
+          }
+          <MDBRow center md="4" middle><MDBBtn onClick={() => setPage(page + 1)}>Load more...</MDBBtn></MDBRow>
         </MDBContainer>
       </div>
     </React.Fragment>
