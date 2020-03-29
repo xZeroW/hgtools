@@ -13,21 +13,9 @@ export default function BuildList() {
   const [page, setPage] = useState(0);
 
   useEffect(() => {
-    Axios.get(`${config.API_URL}/builds/?limit=3`)
-      .then((res) => {
-        setIsLoading(false);
-        setData(res.data);
-      })
-      .catch(function () {
-        // handle error
-      });
-  }, []);
-
-
-  useEffect(() => {
     Axios.get(`${config.API_URL}/builds/?limit=3&page=${page}`)
       .then((res) => {
-        console.log(res.data);
+        setIsLoading(false);
         setData(data.concat(res.data));
       })
       .catch(function () {

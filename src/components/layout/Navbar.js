@@ -33,7 +33,7 @@ export default class Navbar extends React.Component {
     const { currentUser } = this.state;
     return (
       <header>
-        <MDBNavbar className="bg-primary" dark expand="md" scrolling fixed="top">
+        <MDBNavbar color="bg-primary" fixed="top" dark expand="md" scrolling>
           <MDBNavbarBrand href="/">
             <strong>HGTools</strong>
           </MDBNavbarBrand>

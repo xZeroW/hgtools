@@ -22,7 +22,7 @@ export default function Build({title, id, creator, createdAt}) {
         </MDBCardBody>
                 
         <Link to={'/builds/' + id}>
-          <MDBCardImage className="img-fluid" src="http://via.placeholder.com/1280x720" alt="" />
+          <MDBCardImage className="img-fluid" src="https://via.placeholder.com/1280x720" alt="" />
           <div className="mask rgba-white-slight"></div>
         </Link>
                 
