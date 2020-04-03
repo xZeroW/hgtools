@@ -24,7 +24,7 @@ export default function Navbar() {
         <MDBNavbarBrand href="/">
           <strong>HGTools</strong>
         </MDBNavbarBrand>
-        <MDBNavbarToggler onClick={() => handleToggle } />
+        <MDBNavbarToggler id="navbar-toggler" onClick={handleToggle} />
         <MDBCollapse isOpen = { collapse } navbar>
           <MDBNavbarNav left>
             <MDBNavItem>
