@@ -13,7 +13,7 @@ export default function BuildList() {
   const [page, setPage] = useState(0);
 
   useEffect(() => {
-    Axios.get(`${config.API_URL}/builds/?limit=3&page=${page}`)
+    Axios.get(`${config.API_URL}/builds/?limit=6&page=${page}`)
       .then((res) => {
         setIsLoading(false);
         setData(data.concat(res.data));

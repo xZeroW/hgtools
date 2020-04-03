@@ -6,6 +6,7 @@ import * as serviceWorker from 'serviceWorker';
 import 'bootstrap-css-only/css/bootstrap.min.css';
 import 'mdbreact/dist/css/mdb.css';
 import 'assets/fontawesome-free/css/all.min.css';
+import 'components/layout/switch.css';
 
 ReactDOM.render(<App />, document.getElementById('root'));
 
