@@ -3,13 +3,16 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { MDBCol, MDBCard, MDBCardBody, MDBCardImage, MDBCardTitle, MDBIcon } from 'mdbreact';
 
+import avatar from './avatar.png';
+import thumbnail from './thumbnail.png';
+
 export default function Build({title, id, creator, createdAt}) {
 
   return(
     <MDBCol md="4" >
       <MDBCard className="mb-4">
         <MDBCardBody>
-          <img src="http://via.placeholder.com/100" title={creator} className="float-left rounded-circle img-fluid" height="50px" width="50px" alt="avatar" />
+          <img src={avatar} title={creator} className="float-left rounded-circle img-fluid" height="50px" width="50px" alt="avatar" />
           <div style={{ paddingLeft: '60px'}}>
             <Link to={'/builds/' + id}>
               <MDBCardTitle title={title} className="text-truncate">{title}</MDBCardTitle>
@@ -22,7 +25,7 @@ export default function Build({title, id, creator, createdAt}) {
         </MDBCardBody>
                 
         <Link to={'/builds/' + id}>
-          <MDBCardImage className="img-fluid" src="https://via.placeholder.com/1280x720" alt="" />
+          <MDBCardImage className="img-fluid" src={thumbnail} alt="" />
           <div className="mask rgba-white-slight"></div>
         </Link>
                 

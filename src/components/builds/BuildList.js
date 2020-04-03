@@ -26,7 +26,6 @@ export default function BuildList() {
   return(
     <React.Fragment>
       <Navbar />
-      <div id="main">
         <MDBContainer className="text-left mt-5 pt-5">
           {isLoading ? 
             <MDBRow center>
@@ -44,7 +43,6 @@ export default function BuildList() {
           }
           <MDBRow center md="4" middle><MDBBtn onClick={() => setPage(page + 1)}>Load more...</MDBBtn></MDBRow>
         </MDBContainer>
-      </div>
     </React.Fragment>
   );
 }
