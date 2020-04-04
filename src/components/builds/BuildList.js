@@ -26,23 +26,22 @@ export default function BuildList() {
   return(
     <React.Fragment>
       <Navbar />
-        <MDBContainer className="text-left mt-5 pt-5">
-          {isLoading ? 
-            <MDBRow center>
-              <div className="spinner-border text-primary" role="status">
-                <span className="sr-only">Loading...</span>
-              </div>
-            </MDBRow>
-            : 
-            (<MDBRow>
-              {data.map(build =>
-                <Build title={build.title} key={build.id} id={build.id} createdAt={build.createdAt} creator={build.creator.username} />
-              )}
-                  
-            </MDBRow>)
-          }
-          <MDBRow center md="4" middle><MDBBtn onClick={() => setPage(page + 1)}>Load more...</MDBBtn></MDBRow>
-        </MDBContainer>
+      <MDBContainer className="text-left mt-5 pt-5">
+        {isLoading ? 
+          <MDBRow center>
+            <div className="spinner-border text-primary" role="status">
+              <span className="sr-only">Loading...</span>
+            </div>
+          </MDBRow>
+          : 
+          (<MDBRow>
+            {data.map(build =>
+              <Build title={build.title} key={build.id} id={build.id} createdAt={build.createdAt} creator={build.creator.username} />
+            )}
+          </MDBRow>)
+        }
+        <MDBRow center md="4" middle><MDBBtn onClick={() => setPage(page + 1)}>Load more...</MDBBtn></MDBRow>
+      </MDBContainer>
     </React.Fragment>
   );
 }
